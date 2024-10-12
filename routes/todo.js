@@ -7,7 +7,7 @@ const router = express.Router()
 
 router
   .route("/todos")
-  .get(todoController.getTodos)
+  .get(catchAsync(todoController.getTodos))
   .post(validateTodo, catchAsync(todoController.createTodo))
 
 router.route("/todos/delete").post(catchAsync(todoController.deleteTodos))
