@@ -4,12 +4,14 @@ import express from "express"
 import mongoose from "mongoose"
 import cors from "cors"
 import ExpressError from "./utils/ExpressError.js"
+import helmet from "helmet"
 
 // Import Routes
 import todoRoutes from "./routes/todo.js"
 
 const app = express()
 app.use(cors())
+app.use(helmet({ contentSecurityPolicy: false }))
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
